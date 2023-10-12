@@ -56,24 +56,29 @@ export default function Home() {
   }, []);
   return (
     <main className={styles.main}>
+      <footer>
+        <h1>Gas hub</h1>
+      </footer>
       {loading ?
         (
-          <p>loading...</p>
+          <div className={styles.loading}>
+          <div className={styles.lds_hourglass}/>
+          <div>loading</div>
+          </div>
         ) : (
           <>
-            <h1> gas price </h1>
             <br />
-            <div className={styles.description}>
-              <p>Gas price in gwei is {gasPrice / 1000000000} gwei for slow transaction</p>
-              <p>Gas price in gwei is {(gasPrice / 1000000000) * 2} gwei for medium transaction</p>
+            <div className={styles.twoTables}>
+              <div className={styles.tableOne}>{gasPrice / 1000000000} gwei for slow transaction</div>
+              
+              <div className={styles.tableTwo}>{(gasPrice / 1000000000) * 2} gwei for medium transaction</div>
             </div>
             <br />
             <p>
               last update: {new Date().toLocaleString()}
             </p>
             <br />
-            <h1> gas estimate </h1>
-
+            <h1> Gas estimate </h1>
             <table className={styles.material_table}>
               <thead>
                 <tr>
