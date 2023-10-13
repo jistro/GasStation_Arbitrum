@@ -125,6 +125,13 @@
   }
 }
 
+.header {
+  background-color: #1f1f1f;
+  color: #fff;
+  font-family: monospace;
+  padding: 1rem;
+}
+
 /*phone size*/
 @media (max-width: 600px) {
   .description {
