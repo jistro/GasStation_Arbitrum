@@ -149,6 +149,7 @@ export default function Home() {
               </p>
               <br />
               <h1> Gas estimate </h1>
+              <br />
               <table className={styles.material_table}>
                 <thead
                   style={{
