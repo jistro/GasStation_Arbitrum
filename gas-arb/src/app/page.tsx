@@ -150,7 +150,11 @@ export default function Home() {
               <br />
               <h1> Gas estimate </h1>
               <table className={styles.material_table}>
-                <thead>
+                <thead
+                  style={{
+                    borderRadius: '10px',
+                  }}
+                >
                   <tr>
                     <th className={styles.material_table__nameTransaction}>
                       Name of transaction</th>
@@ -160,7 +164,7 @@ export default function Home() {
                     <th>
                       Eth cost
                     </th>
-                    <th>
+                    <th className={styles.material_table__USDCost}>
                       USD cost
                     </th>
                   </tr>
@@ -191,10 +195,10 @@ export default function Home() {
                     <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[3]))}`}</td>
                   </tr>
                   <tr>
-                    <td>Custom gas</td>
+                    <td className={styles.material_table__rawLeft}>Custom gas</td>
                     <td><input type="number" id="customGas" name="customGas" onChange={getCustomGasPrice} /></td>
                     <td>{`Ξ ${customGasPrice}`}</td>
-                    <td>{`$ ${convertETHtoUSD(customGasPrice)}`}</td>
+                    <td className={styles.material_table__rawRight}>{`$ ${convertETHtoUSD(customGasPrice)}`}</td>
                   </tr>
                 </tbody>
               </table>

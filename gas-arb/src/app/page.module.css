@@ -44,17 +44,31 @@
 
 .material_table {
   width: 100%;
-  border-collapse: collapse;
   background-color: #ffffffda;
+  border-radius: 10px;
 }
 
 .material_table__nameTransaction {
   width: 210px;
+  border-top-left-radius: 10px;
 }
 
 .material_table__gasPrice {
-  width: 100px;
+  width: 150px;
 }
+
+.material_table__USDCost{
+  border-top-right-radius: 10px;
+}
+
+.material_table__rawLeft {
+  border-bottom-left-radius: 10px;
+}
+
+.material_table__rawRight {
+  border-bottom-right-radius: 10px;
+}
+
 
 .material_table th {
   background-color: #0098dfde;
@@ -76,10 +90,13 @@
 .material_table input {
   border-color: #000000;
   border-radius: 5px;
-  padding: 6px;
+  padding: 1.5px;
   background-color: transparent;
   color: #000;
   width: 100%;
+  border-top-color: #00000000;
+    border-left-color: #00000000;
+    border-right-color: #00000000;
 }
 
 .loading {
@@ -142,11 +159,16 @@
     font-size: 12px;
   }
   .material_table__nameTransaction {
-    width: 100px;
+    width: 90px;
+  }
+
+  .material_table input {
+    width: 100%;
+    
   }
 
   .material_table__gasPrice {
-    width: 20px;
+    width: 90px;
   }
 
   .tableOne,
