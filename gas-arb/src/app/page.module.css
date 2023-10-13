@@ -124,12 +124,16 @@
     flex-direction: column;
   }
 
-  .description p {
-    margin: 0;
-    padding: 1rem;
+  .tableOne,
+  .tableTwo {
+    margin-left: 0;
+  }
+
+  .twoTables {
+    flex-direction: column;
+  }
+
+  .material_table input {
     width: 100%;
-    background-color: rgba(var(--callout-rgb), 0.5);
-    border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-    border-radius: var(--border-radius);
   }
 }
