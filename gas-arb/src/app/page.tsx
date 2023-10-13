@@ -11,6 +11,7 @@ export default function Home() {
   const [gasPrice, setGasPrice] = useState(0);
   const [txEstimateGas, setTxEstimateGas] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
+  const [customGasPrice, setCustomGasPrice] = useState(0);
 
 
   const getGasPrice = async () => {
@@ -54,6 +55,20 @@ export default function Home() {
   useEffect(() => {
     getGasPrice();
   }, []);
+
+  const getCustomGasPrice = () => {
+    const inputID = document.getElementById("customGas") as HTMLInputElement;
+    /// volvemos a inputID un numero
+    if (inputID.value !== "") {
+    const gasPriceValue = (parseInt(inputID.value) * gasPrice) / 1000000000000000000;
+    console.log(gasPriceValue);
+    setCustomGasPrice(gasPriceValue);
+    } else {
+      setCustomGasPrice(0);
+    }
+  }
+
+
   return (
     <main className={styles.main}>
       <footer>
@@ -103,8 +118,16 @@ export default function Home() {
                   <td>{txEstimateGas[2]}</td>
                   <td>{`Ξ ${(txEstimateGas[2] * gasPrice) / 1000000000000000000}`}</td>
                 </tr>
+
+                <tr>
+                  <td>Custom gas</td>
+                  <td><input type="number" id="customGas" name="customGas" onChange={getCustomGasPrice}
+                  /></td>
+                  <td>{`Ξ ${customGasPrice}`}</td>
+                </tr>
               </tbody>
             </table>
+
           </>
         )
 

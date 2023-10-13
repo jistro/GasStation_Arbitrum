@@ -67,6 +67,14 @@
   background-color: #e0e0e0;
 }
 
+.material_table input {
+  border-color: #000000;
+  border-radius: 5px;
+  padding: 6px;
+  background-color: transparent;
+  color: #000;
+}
+
 .loading {
   display: flex;
   justify-content: center;
