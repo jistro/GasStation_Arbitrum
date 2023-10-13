@@ -112,6 +112,11 @@ export default function Home() {
 
   return (
     <>
+    <meta 
+        charSet="utf-8" 
+        name="Gas hub for Arbitrum"
+        content="Gas hub is a tool for Arbitrum users to find the gas prices and gas fees for their transactions."
+      />
       <main className={styles.main}>
         <footer>
           <Image
