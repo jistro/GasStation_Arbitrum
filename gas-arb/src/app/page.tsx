@@ -217,7 +217,7 @@ export default function Home() {
               <div style={{ textAlign: 'left', color: '#EDEDED', fontFamily: 'monospace' }}>
                 <h1 style={{ paddingBottom: '20px' }}>What is gas?</h1>
                 <p>
-                  Gas is like fuel for the network, powering its operations. Every action requires computational effort measured in units called "gwei." These units, denominated in ether (ETH), are paid as gas fees.
+                  Gas is like fuel for the network, powering its operations. Every action requires computational effort measured in units called &quot;gwei.&quot; These units, denominated in ether (ETH), are paid as gas fees.
                 </p>
                 <br />
 
@@ -226,7 +226,7 @@ export default function Home() {
                 </p>
                 <br />
                 <p>
-                  The "poster," if reimbursable, for L1 resources like L1 calldata required to post the transaction.
+                  The &quot;poster,&quot; if reimbursable, for L1 resources like L1 calldata required to post the transaction.
                 </p>
                 <br />
                 <p>
@@ -234,7 +234,7 @@ export default function Home() {
                 </p>
                 <br />
                 <p>
-                  The L1 component of the fee is determined by the transaction's estimated contribution to its batch's size and the L2's view of the L1 data price, which adjusts dynamically to ensure fair compensation for batch posters. The L2 component includes traditional fees, like computation and storage charges, as well as additional fees for executing L2-specific precompiles, which are priced based on the resources used during execution.
+                  The L1 component of the fee is determined by the transaction&apos;s estimated contribution to its batch&apos;s size and the L2&apos;s view of the L1 data price, which adjusts dynamically to ensure fair compensation for batch posters. The L2 component includes traditional fees, like computation and storage charges, as well as additional fees for executing L2-specific precompiles, which are priced based on the resources used during execution.
                 </p>
                 <br />
                 <p>
