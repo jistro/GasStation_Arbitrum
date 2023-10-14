@@ -3,6 +3,8 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import React, { useState, useEffect } from 'react'
 import exp from 'constants';
+import Head from 'next/head';
+
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY_ARB;
 
@@ -112,11 +114,14 @@ export default function Home() {
 
   return (
     <>
-    <meta 
+    <Head>
+        <title>Gas hub</title>
+      <meta 
         charSet="utf-8" 
         name="Gas hub for Arbitrum"
         content="Gas hub is a tool for Arbitrum users to find the gas prices and gas fees for their transactions."
       />
+      </Head>
       <main className={styles.main}>
         <footer>
           <Image

@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Mulish } from 'next/font/google'
+import Head from 'next/head';
 
 const mulish = Mulish({ subsets: ['latin'] })
 
@@ -19,11 +20,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <meta 
-        charSet="utf-8" 
-        name="Gas hub for Arbitrum"
-        content="Gas hub is a tool for Arbitrum users to find the gas prices and gas fees for their transactions."
-      />
+      
+      
       <head>
         <link rel="icon" href="/arbitrum-shield.svg" />
       </head>
