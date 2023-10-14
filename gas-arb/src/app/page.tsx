@@ -213,25 +213,9 @@ export default function Home() {
                   </tr>
                 </tbody>
               </table>
-              <p
-                style={{
-                  paddingBottom: '50px',
-                }}
-              />
-              <div
-                style={{
-                  textAlign: 'left',
-                  color: '#EDEDED',
-                  fontFamily: 'monospace',
-                }}
-              >
-                <h1
-                  style={{
-                    paddingBottom: '20px',
-                  }}
-                >
-                  What is gas?
-                </h1>
+              <div style={{ paddingBottom: '50px' }} />
+              <div style={{ textAlign: 'left', color: '#EDEDED', fontFamily: 'monospace' }}>
+                <h1 style={{ paddingBottom: '20px' }}>What is gas?</h1>
                 <p>
                   Gas is like fuel for the network, powering its operations. Every action requires computational effort measured in units called "gwei." These units, denominated in ether (ETH), are paid as gas fees.
                 </p>
@@ -254,18 +238,15 @@ export default function Home() {
                 </p>
                 <br />
                 <p>
-                  Arbitrum establishes a minimum gas price floor, which currently set at 0.1 gwei on Arbitrum One and 0.01 gwei on Nova.
+                  Arbitrum establishes a minimum gas price floor, which is currently set at 0.1 gwei on Arbitrum One and 0.01 gwei on Nova.
                 </p>
                 <br />
                 <p>
                   In Arbitrum, transaction tips are not considered, as the sequencer prioritizes transactions on a first-come, first-served basis. Users pay the base fee, regardless of the tip they may choose.
                 </p>
               </div>
-              <p
-                style={{
-                  paddingBottom: '50px',
-                }}
-              />
+              <div style={{ paddingBottom: '50px' }} />
+
             </>
           )
 
