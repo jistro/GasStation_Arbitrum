@@ -114,13 +114,13 @@ export default function Home() {
 
   return (
     <>
-    <Head>
+      <Head>
         <title>Gas hub</title>
-      <meta 
-        charSet="utf-8" 
-        name="Gas hub for Arbitrum"
-        content="Gas hub is a tool for Arbitrum users to find the gas prices and gas fees for their transactions."
-      />
+        <meta
+          charSet="utf-8"
+          name="Gas hub for Arbitrum"
+          content="Gas hub is a tool for Arbitrum users to find the gas prices and gas fees for their transactions."
+        />
       </Head>
       <main className={styles.main}>
         <footer>
@@ -213,7 +213,59 @@ export default function Home() {
                   </tr>
                 </tbody>
               </table>
+              <p
+                style={{
+                  paddingBottom: '50px',
+                }}
+              />
+              <div
+                style={{
+                  textAlign: 'left',
+                  color: '#EDEDED',
+                  fontFamily: 'monospace',
+                }}
+              >
+                <h1
+                  style={{
+                    paddingBottom: '20px',
+                  }}
+                >
+                  What is gas?
+                </h1>
+                <p>
+                  Gas is like fuel for the network, powering its operations. Every action requires computational effort measured in units called "gwei." These units, denominated in ether (ETH), are paid as gas fees.
+                </p>
+                <br />
 
+                <p>
+                  In the context of Arbitrum, there are two parties that users pay when submitting a transaction:
+                </p>
+                <br />
+                <p>
+                  The "poster," if reimbursable, for L1 resources like L1 calldata required to post the transaction.
+                </p>
+                <br />
+                <p>
+                  The network fee account for L2 resources, which includes computation, storage, and other burdens borne by L2 nodes to process the transaction.
+                </p>
+                <br />
+                <p>
+                  The L1 component of the fee is determined by the transaction's estimated contribution to its batch's size and the L2's view of the L1 data price, which adjusts dynamically to ensure fair compensation for batch posters. The L2 component includes traditional fees, like computation and storage charges, as well as additional fees for executing L2-specific precompiles, which are priced based on the resources used during execution.
+                </p>
+                <br />
+                <p>
+                  Arbitrum establishes a minimum gas price floor, which currently set at 0.1 gwei on Arbitrum One and 0.01 gwei on Nova.
+                </p>
+                <br />
+                <p>
+                  In Arbitrum, transaction tips are not considered, as the sequencer prioritizes transactions on a first-come, first-served basis. Users pay the base fee, regardless of the tip they may choose.
+                </p>
+              </div>
+              <p
+                style={{
+                  paddingBottom: '50px',
+                }}
+              />
             </>
           )
 
