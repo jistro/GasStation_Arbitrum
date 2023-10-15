@@ -1,4 +1,5 @@
-# <img src="gas-arb/public/LOGO.png" width="600" />
+# <img src="https://github.com/jistro/GasStation_Arbitrum/assets/22781439/1cf69995-a9f9-4697-9c23-167b1d9aa4ea" width="700" />
+
 
 <img src="https://github.com/jistro/GasStation_Arbitrum/assets/22781439/c5fe67d8-e0e1-4a7d-a4d5-6d38a834566a" width="400" />
 
