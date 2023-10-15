@@ -137,7 +137,15 @@ export default function Home() {
           (
             <div className={styles.loading}>
               <div className={styles.lds_hourglass} />
-              <div>loading</div>
+              <div
+                style={{
+                  fontSize: '15px',
+                  textAlign: 'center',
+                  fontFamily: 'monospace',
+                }}
+              >
+                fetching data...
+              </div>
             </div>
           ) : (
             <>
@@ -150,7 +158,7 @@ export default function Home() {
               <p
                 style={{
                   fontSize: '10px',
-                  color: 'gray',
+                  color: '#bababa',
                   textAlign: 'center',
                   fontFamily: 'monospace',
                 }}
@@ -213,45 +221,50 @@ export default function Home() {
                   </tr>
                 </tbody>
               </table>
-              <div style={{ paddingBottom: '50px' }} />
-              <div style={{ textAlign: 'left', color: '#EDEDED', fontFamily: 'monospace' }}>
-                <h1 style={{ paddingBottom: '20px' }}>What is gas?</h1>
-                <p>
-                  Gas is like fuel for the network, powering its operations. Every action requires computational effort measured in units called &quot;gwei.&quot; These units, denominated in ether (ETH), are paid as gas fees.
-                </p>
-                <br />
-
-                <p>
-                  In the context of Arbitrum, there are two parties that users pay when submitting a transaction:
-                </p>
-                <br />
-                <p>
-                  The &quot;poster,&quot; if reimbursable, for L1 resources like L1 calldata required to post the transaction.
-                </p>
-                <br />
-                <p>
-                  The network fee account for L2 resources, which includes computation, storage, and other burdens borne by L2 nodes to process the transaction.
-                </p>
-                <br />
-                <p>
-                  The L1 component of the fee is determined by the transaction&apos;s estimated contribution to its batch&apos;s size and the L2&apos;s view of the L1 data price, which adjusts dynamically to ensure fair compensation for batch posters. The L2 component includes traditional fees, like computation and storage charges, as well as additional fees for executing L2-specific precompiles, which are priced based on the resources used during execution.
-                </p>
-                <br />
-                <p>
-                  Arbitrum establishes a minimum gas price floor, which is currently set at 0.1 gwei on Arbitrum One and 0.01 gwei on Nova.
-                </p>
-                <br />
-                <p>
-                  In Arbitrum, transaction tips are not considered, as the sequencer prioritizes transactions on a first-come, first-served basis. Users pay the base fee, regardless of the tip they may choose.
-                </p>
-              </div>
-              <div style={{ paddingBottom: '50px' }} />
-
             </>
-          )
-
-        }
-
+          )}
+        <div style={{ paddingBottom: '50px' }} />
+        <div style={{ textAlign: 'left', color: '#EDEDED', fontFamily: 'monospace' }}>
+          <h1 style={{ paddingBottom: '20px' }}>What is gas?</h1>
+          <p>
+            Gas is like fuel for the network, powering its operations. Every action requires computational effort measured in units called &quot;gwei.&quot; These units, denominated in ether (ETH), are paid as gas fees.
+          </p>
+          <br />
+          <h1 style={{ paddingBottom: '20px' }}>Gas Fees in Arbitrum</h1>
+          <p>
+            In the context of Arbitrum, there are two parties that users pay when submitting a transaction:
+          </p>
+          <br />
+          <p>
+            The &quot;poster,&quot; if reimbursable, for L1 resources like L1 calldata required to post the transaction.
+          </p>
+          <br />
+          <p>
+            The network fee account for L2 resources, which includes computation, storage, and other burdens borne by L2 nodes to process the transaction.
+          </p>
+          <br />
+          <p>
+            The L1 component of the fee is determined by the transaction&apos;s estimated contribution to its batch&apos;s size and the L2&apos;s view of the L1 data price, which adjusts dynamically to ensure fair compensation for batch posters. The L2 component includes traditional fees, like computation and storage charges, as well as additional fees for executing L2-specific precompiles, which are priced based on the resources used during execution.
+          </p>
+          <br />
+          <p>
+            Arbitrum establishes a minimum gas price floor, which is currently set at 0.1 gwei on Arbitrum One and 0.01 gwei on Nova.
+          </p>
+          <br />
+          <p
+            style={{
+              fontFamily: 'monospace',
+              fontWeight: 'bold',
+            }}
+          >
+            In Arbitrum, transaction tips are not considered, as the sequencer prioritizes transactions on a first-come, first-served basis. Users pay the base fee, regardless of the tip they may choose.
+          </p>
+          <br />
+          <p> For more information, please visit the official documentation: </p>
+          <p> <a href="https://docs.arbitrum.io/arbos/gas" className={styles.link}>Arbitrum documentation -- Gas and Fees </a></p>
+          <p> <a href="https://ethereum.org/en/developers/docs/gas/" className={styles.link}>Ethereum documentation -- Gas and Fees </a></p>
+        </div>
+        <div style={{ paddingBottom: '50px' }} />
       </main>
       <header className={styles.header}>
         <p
@@ -260,7 +273,7 @@ export default function Home() {
             fontFamily: 'monospace',
           }}
         >
-          Made with ❤️ by <a href="https://twitter.com/jistro" style={{ color: 'white', textDecoration: 'none', }}>@jistro</a> for the arbitrum community
+          Made with ❤️ by <a href="https://twitter.com/jistro" style={{ color: 'white', textDecoration: 'none', }}>@jistro</a> for the arbitrum community (💙,🧡)
         </p>
         <br />
         <p
@@ -269,10 +282,12 @@ export default function Home() {
             color: 'gray',
             textAlign: 'center',
             fontFamily: 'monospace',
-            paddingTop: '10px',
+            paddingTop: '5px',
           }}
         >
-          Disclaimer: All the information is provided by <a href="https://arbiscan.io" style={{ color: 'gray', textDecoration: 'none', }}>arbiscan.io</a> block explorer, and <a href="https://coinbase.com" style={{ color: 'gray', textDecoration: 'none', }}>coinbase.com</a> exchange rate. The developer is not responsible for any loss or damage caused by the use of this information. All gas estimates are calculated using the current gas price and might not be accurate.
+          Disclaimer: This information is sourced from <a href="https://arbiscan.io" style={{ color: 'gray', textDecoration: 'none', }}>arbiscan.io</a> block explorer data and <a href="https://coinbase.com" style={{ color: 'gray', textDecoration: 'none', }}>coinbase.com</a> exchange rates API. 
+          
+          The developer assumes no liability for any losses or damages resulting from the use of this information. Please note that all gas estimates are based on the current gas price and may not be entirely precise.
         </p>
       </header>
     </>
