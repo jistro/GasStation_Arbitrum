@@ -26,7 +26,7 @@ export default function Home() {
       const gasPriceData = await gasPriceResponse.json();
       const gasPriceValue = gasPriceData.result;
 
-      const [response1, response2, response3, response4] = await Promise.all([
+      const [response1, response2, response3, response4, response5] = await Promise.all([
         fetch(
           `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&data=0x&to=0x007aB5199B6c57F7aA51bc3D0604a43505501a0C&value=0x1&gasPrice=${gasPriceValue}&apikey=${API_KEY}`
         ),
@@ -39,13 +39,17 @@ export default function Home() {
         fetch(
           `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&data=0x42842e0e000000000000000000000000837cb1cf798d2a8cbb898a86e1bb5ee0978233ab00000000000000000000000085e9c743172f1d7ed4652fdf27f571453caf3ceb00000000000000000000000000000000000000000000000000000000000009ce&to=0x85E9c743172F1d7ed4652fdf27f571453CAf3CeB&gasPrice=${gasPriceValue}&apikey=${API_KEY}`
         ),
+        fetch(
+          `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&data=0x414bf38900000000000000000000000082af49447d8a07e3bd95bd0d56f35241523fbab1000000000000000000000000ff970a61a04b1ca14834a43f5de4533ebddb5cc80000000000000000000000000000000000000000000000000000000000000bb80000000000000000000000005e31450f86bc16c2756dd36dc7b188ad728b391b00000000000000000000000000000000000000000000000000000000652da4e2000000000000000000000000000000000000000000000000000eef7743c380a1000000000000000000000000000000000000000000000000000000000064c8a10000000000000000000000000000000000000000000000000000000000000000&to=0xe592427a0aece92de3edee1f18e0157c05861564&gasPrice=${gasPriceValue}&apikey=${API_KEY}`
+        ),
       ]);
 
-      const [result1, result2, result3, result4] = await Promise.all([
+      const [result1, result2, result3, result4, result5] = await Promise.all([
         response1.json(),
         response2.json(),
         response3.json(),
         response4.json(),
+        response5.json(),
       ]);
 
       setGasPrice(gasPriceValue);
@@ -54,6 +58,7 @@ export default function Home() {
         parseInt(result2.result, 16),
         parseInt(result3.result, 16),
         parseInt(result4.result, 16),
+        parseInt(result5.result, 16),
       ]);
       setLoading(false);
     } catch (error) {
@@ -130,7 +135,10 @@ export default function Home() {
             width={0}
             height={0}
             sizes="100vw"
-            style={{ width: '20%', height: 'auto' }} // optional
+            style={
+              { width: '25%', height: 'auto' }
+
+            } // optional
           />
         </footer>
         {loading ?
@@ -151,8 +159,9 @@ export default function Home() {
             <>
               <br />
               <div className={styles.twoTables}>
-                <div className={styles.tableOne}>{gasPrice / 1000000000} gwei for slow transaction</div>
-                <div className={styles.tableTwo}>{(gasPrice / 1000000000) * 2} gwei for medium transaction</div>
+                <div className={styles.tableGas}>
+                  {gasPrice / 1000000000} gwei for transaction
+                </div>
               </div>
               <br />
               <p
@@ -168,59 +177,67 @@ export default function Home() {
               <br />
               <h1> Gas estimate </h1>
               <br />
-              <table className={styles.material_table}>
-                <thead
-                  style={{
-                    borderRadius: '10px',
-                  }}
-                >
-                  <tr>
-                    <th className={styles.material_table__nameTransaction}>
-                      Name of transaction</th>
-                    <th className={styles.material_table__gasPrice}>
-                      Gas
-                    </th>
-                    <th>
-                      Eth cost
-                    </th>
-                    <th className={styles.material_table__USDCost}>
-                      USD cost
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Eth transfer</td>
-                    <td>{txEstimateGas[0]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[0])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[0]))}`}</td>
-                  </tr>
-                  <tr>
-                    <td>ARB transfer</td>
-                    <td>{txEstimateGas[1]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[1])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[1]))}`}</td>
-                  </tr>
-                  <tr>
-                    <td>USDT transfer</td>
-                    <td>{txEstimateGas[2]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[2])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[2]))}`}</td>
-                  </tr>
-                  <tr>
-                    <td>NTF transfer</td>
-                    <td>{txEstimateGas[3]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[3])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[3]))}`}</td>
-                  </tr>
-                  <tr>
-                    <td className={styles.material_table__rawLeft}>Custom gas</td>
-                    <td><input type="number" id="customGas" name="customGas" onChange={getCustomGasPrice} /></td>
-                    <td>{`Ξ ${customGasPrice}`}</td>
-                    <td className={styles.material_table__rawRight}>{`$ ${convertETHtoUSD(customGasPrice)}`}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className={styles.gasTXInfo}>
+                <table className={styles.material_table}>
+                  <thead
+                    style={{
+                      borderRadius: '10px',
+                    }}
+                  >
+                    <tr>
+                      <th className={styles.material_table__nameTransaction}>
+                        Name of transaction</th>
+                      <th className={styles.material_table__gasPrice}>
+                        Gas
+                      </th>
+                      <th>
+                        Eth cost
+                      </th>
+                      <th className={styles.material_table__USDCost}>
+                        USD cost
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Eth transfer</td>
+                      <td>{txEstimateGas[0]}</td>
+                      <td>{`Ξ ${convertGweiToEth(txEstimateGas[0])}`}</td>
+                      <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[0]))}`}</td>
+                    </tr>
+                    <tr>
+                      <td>ARB transfer</td>
+                      <td>{txEstimateGas[1]}</td>
+                      <td>{`Ξ ${convertGweiToEth(txEstimateGas[1])}`}</td>
+                      <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[1]))}`}</td>
+                    </tr>
+                    <tr>
+                      <td>USDT transfer</td>
+                      <td>{txEstimateGas[2]}</td>
+                      <td>{`Ξ ${convertGweiToEth(txEstimateGas[2])}`}</td>
+                      <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[2]))}`}</td>
+                    </tr>
+                    <tr>
+                      <td>NFT transfer</td>
+                      <td>{txEstimateGas[3]}</td>
+                      <td>{`Ξ ${convertGweiToEth(txEstimateGas[3])}`}</td>
+                      <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[3]))}`}</td>
+                    </tr>
+                    <tr>
+                      <td>Swap</td>
+                      <td>{txEstimateGas[4]}</td>
+                      <td>{`Ξ ${convertGweiToEth(txEstimateGas[4])}`}</td>
+                      <td>{`$ ${convertETHtoUSD(convertGweiToEth(txEstimateGas[4]))}`}</td>
+                    </tr>
+                    <tr>
+                      <td className={styles.material_table__rawLeft}>Custom gas</td>
+                      <td><input type="number" id="customGas" name="customGas" onChange={getCustomGasPrice} /></td>
+                      <td>{`Ξ ${customGasPrice}`}</td>
+                      <td className={styles.material_table__rawRight}>{`$ ${convertETHtoUSD(customGasPrice)}`}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </>
           )}
         <div style={{ paddingBottom: '50px' }} />
@@ -285,8 +302,8 @@ export default function Home() {
             paddingTop: '5px',
           }}
         >
-          Disclaimer: This information is sourced from <a href="https://arbiscan.io" style={{ color: 'gray', textDecoration: 'none', }}>arbiscan.io</a> block explorer data and <a href="https://coinbase.com" style={{ color: 'gray', textDecoration: 'none', }}>coinbase.com</a> exchange rates API. 
-          
+          Disclaimer: This information is sourced from <a href="https://arbiscan.io" style={{ color: 'gray', textDecoration: 'none', }}>arbiscan.io</a> block explorer data and <a href="https://coinbase.com" style={{ color: 'gray', textDecoration: 'none', }}>coinbase.com</a> exchange rates API.
+
           The developer assumes no liability for any losses or damages resulting from the use of this information. Please note that all gas estimates are based on the current gas price and may not be entirely precise.
         </p>
       </header>

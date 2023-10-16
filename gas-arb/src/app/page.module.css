@@ -7,39 +7,32 @@
   min-height: 100vh;
 }
 
+
 .twoTables {
   display: flex;
+  justify-content: center;
 }
 
-.tableOne,
-.tableTwo {
-  flex: 1;
-  width: 100%;
+.tableGas {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
   border-radius: 10px;
   border-style: solid;
   border-width: 1px;
-  padding: 10px;
+  padding: 5px;
   background-image: url("https://www.transparenttextures.com/patterns/broken-noise.png");
-  /*hacer efecto fade*/
-  transition: background-image 0.9s ease-in-out;
-  
-}
-
-.tableTwo {
-  margin-left: 1rem;
   border-color: #1b4cdd00;
-  
-}
-.tableOne {
-  border-color: #43485800;
+  font-size: 20px;
 }
 
-
-.tableOne:hover {
-  background-color: #90909083;
-}
-.tableTwo:hover {
+.tableGas:hover {
   background-color: #3c70ff83;
+}
+
+.gasTXInfo{
+  padding: 0px 150px;
 }
 
 .material_table {
@@ -158,10 +151,20 @@
   padding: 1rem;
 }
 
+@media (max-width: 1000px) {
+  .gasTXInfo{
+    padding: 0px 0px;
+  }
+}
+
 /*phone size*/
 @media (max-width: 600px) {
   .description {
     flex-direction: column;
+  }
+
+  .logo {
+    width: 100%;
   }
 
   .material_table{
@@ -180,13 +183,8 @@
     width: 90px;
   }
 
-  .tableOne,
-  .tableTwo {
-    margin-left: 0;
-  }
-
-  .twoTables {
-    flex-direction: column;
+  .tableGas {
+    width: 100%;
   }
 
   .material_table input {
@@ -196,8 +194,6 @@
 
 /*280x653*/
 @media (max-width: 300px) {
-  
-
   .material_table{
     font-size: 10px;
   }
@@ -207,5 +203,7 @@
   .material_table td {
     padding: 5px;
   }
-
+  .material_table__gasPrice {
+    width: 60px;
+  }
 }
