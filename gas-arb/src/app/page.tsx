@@ -160,7 +160,7 @@ export default function Home() {
               <br />
               <div className={styles.twoTables}>
                 <div className={styles.tableGas}>
-                  {gasPrice / 1000000000} gwei for transaction
+                  <p>1 unit of gas = {gasPrice / 1000000000} gwei</p>
                 </div>
               </div>
               <br />
