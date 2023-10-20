@@ -58,7 +58,7 @@ export default function Home() {
         parseInt(result2.result, 16),
         parseInt(result3.result, 16),
         parseInt(result4.result, 16),
-        parseInt(result5.result, 16),
+        (parseInt(result5.result, 16)+parseInt(result2.result, 16)+parseInt(result3.result, 16)),
       ]);
       setLoading(false);
     } catch (error) {
