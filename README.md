@@ -14,3 +14,5 @@ Yes, and we encourage collaboration! We welcome contributions from anyone intere
 - [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Ethers (Legacy edition 5.7.2)](https://www.npmjs.com/package/ethers/v/5.7.2)
+- [Arbitrum SDK](https://www.npmjs.com/package/@arbitrum/sdk)
