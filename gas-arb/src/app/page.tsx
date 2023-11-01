@@ -10,7 +10,6 @@ import { addDefaultLocalNetwork } from "@arbitrum/sdk";
 import { NodeInterface__factory } from "@arbitrum/sdk/dist/lib/abi/factories/NodeInterface__factory";
 import { NODE_INTERFACE_ADDRESS } from "@arbitrum/sdk/dist/lib/dataEntities/constants";
 
-import GasEstimator from "@/components/gasEstimator";
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY_ARB;
 
@@ -177,83 +176,6 @@ export default function Home() {
   };
 
   const getGasPrice = async () => {
-    /*
-    try {
-      const gasPriceResponse = await fetch(
-        `https://api.arbiscan.io/api?module=proxy&action=eth_gasPrice&apikey=${API_KEY}`
-      );
-      const gasPriceData = await gasPriceResponse.json();
-      const gasPriceValue = gasPriceData.result;
-
-      const [response1, response2, response3, response4, response5] =
-        await Promise.all([
-          -fetch(
-            `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&
-            data=0x
-            &
-            to=0x007aB5199B6c57F7aA51bc3D0604a43505501a0C
-            &
-            value=0x1
-            &
-            gasPrice=${gasPriceValue}&apikey=${API_KEY}`
-          ),
-          -fetch(
-            `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&
-            data=0xa9059cbb00000000000000000000000005f11b22d790fe64f7984fa4e5926c8f37216f1000000000000000000000000000000000000000000000003635c9adc5dea00000
-            &
-            to=0x007aB5199B6c57F7aA51bc3D0604a43505501a0C
-            &
-            gasPrice=${gasPriceValue}&apikey=${API_KEY}`
-          ),
-          -fetch(
-            `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&
-            data=0xa9059cbb000000000000000000000000f89d7b9c864f589bbf53a82105107622b35eaa4000000000000000000000000000000000000000000000000000000000000F4240
-            &
-            to=0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9
-            &
-            gasPrice=${gasPriceValue}&apikey=${API_KEY}`
-          ),
-          -fetch(
-            `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&
-            data=0x42842e0e000000000000000000000000837cb1cf798d2a8cbb898a86e1bb5ee0978233ab00000000000000000000000085e9c743172f1d7ed4652fdf27f571453caf3ceb00000000000000000000000000000000000000000000000000000000000009ce
-            &
-            to=0x85E9c743172F1d7ed4652fdf27f571453CAf3CeB
-            &
-            gasPrice=${gasPriceValue}&apikey=${API_KEY}`
-          ),
-          -fetch(
-            `https://api-goerli.arbiscan.io/api?module=proxy&action=eth_estimateGas&
-            data=0x414bf38900000000000000000000000082af49447d8a07e3bd95bd0d56f35241523fbab1000000000000000000000000ff970a61a04b1ca14834a43f5de4533ebddb5cc80000000000000000000000000000000000000000000000000000000000000bb80000000000000000000000005e31450f86bc16c2756dd36dc7b188ad728b391b00000000000000000000000000000000000000000000000000000000652da4e2000000000000000000000000000000000000000000000000000eef7743c380a1000000000000000000000000000000000000000000000000000000000064c8a10000000000000000000000000000000000000000000000000000000000000000
-            &
-            to=0xe592427a0aece92de3edee1f18e0157c05861564
-            &
-            gasPrice=${gasPriceValue}&apikey=${API_KEY}`
-          ),
-        ]);
-
-      const [result1, result2, result3, result4, result5] = await Promise.all([
-        response1.json(),
-        response2.json(),
-        response3.json(),
-        response4.json(),
-        response5.json(),
-      ]);
-
-      setGasPrice(gasPriceValue);
-      setTxEstimateGas([
-        parseInt(result1.result, 16),
-        parseInt(result2.result, 16),
-        parseInt(result3.result, 16),
-        parseInt(result4.result, 16),
-        parseInt(result5.result, 16) +
-          parseInt(result2.result, 16) +
-          parseInt(result3.result, 16),
-      ]);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setLoading(false);
-    }*/
     try {
       const [result1, result2, result3, result4] = await Promise.all([
         calculateGasFee("0x007aB5199B6c57F7aA51bc3D0604a43505501a0C", "0x"),
@@ -329,7 +251,8 @@ export default function Home() {
   };
 
   const convertGweiToEth = (units: any) => {
-    return utils.formatUnits(units, "gwei");
+    const eth = units / 10000000000;
+    return eth.toFixed(9);
   };
 
   const convertETHtoUSD = (eth: any) => {
