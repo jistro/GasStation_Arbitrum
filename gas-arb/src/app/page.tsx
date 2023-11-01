@@ -594,14 +594,14 @@ export default function Home() {
             paddingTop: "5px",
           }}
         >
-          Disclaimer: This information is sourced from{" "}
+          Disclaimer: This information is sourced using{" "}
           <a
-            href="https://arbiscan.io"
+            href="https://www.npmjs.com/package/@arbitrum/sdk"
             style={{ color: "gray", textDecoration: "none" }}
           >
-            arbiscan.io
+            Arbitrum SDK
           </a>{" "}
-          block explorer data and{" "}
+          and fetching data from{" "}
           <a
             href="https://coinbase.com"
             style={{ color: "gray", textDecoration: "none" }}
