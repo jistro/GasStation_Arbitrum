@@ -384,7 +384,7 @@ export default function Home() {
             <br />
             <div className={styles.twoTables}>
               <div className={styles.tableGas}>
-                <p>1 unit of gas = {gasPrice} gwei</p>
+                <p>L2 1 unit of gas = {gasPrice} gwei</p>
               </div>
             </div>
             <br />
