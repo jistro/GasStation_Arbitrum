@@ -2,14 +2,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import React, { useState, useEffect } from "react";
-import exp from "constants";
 import Head from "next/head";
 
 import { utils, providers } from "ethers";
 import { addDefaultLocalNetwork } from "@arbitrum/sdk";
 import { NodeInterface__factory } from "@arbitrum/sdk/dist/lib/abi/factories/NodeInterface__factory";
 import { NODE_INTERFACE_ADDRESS } from "@arbitrum/sdk/dist/lib/dataEntities/constants";
-
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY_ARB;
 
@@ -257,7 +255,7 @@ export default function Home() {
 
   const convertETHtoUSD = (eth: any) => {
     const usd = eth * usd_eth;
-    return usd.toFixed(3);
+    return usd.toFixed(2);
   };
 
   const convertUnixTime = (unixTime: number) => {
