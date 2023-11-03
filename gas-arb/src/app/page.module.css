@@ -180,6 +180,12 @@
   .gasTXInfo{
     padding: 0px 0px;
   }
+  .material_table__USDCost__Container select {
+    font-size: 15px;
+  }
+  .material_table__USDCost {
+    width: 100px;
+  }
 }
 
 /*phone size*/
@@ -197,6 +203,16 @@
   }
   .material_table__nameTransaction {
     width: 90px;
+  }
+.material_table__gasPrice {
+    width: 100px;
+  }
+  .material_table__USDCost__Container select {
+    font-size: 11px;
+    height: 20px;
+  }
+  .td_ethCost {
+    font-size: 10px;
   }
 
   .material_table input {
@@ -216,7 +232,19 @@
     width: 100%;
   }
 }
-
+@media (max-width: 400px){
+  .material_table__nameTransaction {
+    width: 70px;
+  }
+  .td_ethCost {
+    width: 200px;
+    font-size: 10px;
+  }
+  .material_table__USDCost__Container select {
+    font-size: 11px;
+    height: 20px;
+  }
+}
 /*280x653*/
 @media (max-width: 300px) {
   .material_table{

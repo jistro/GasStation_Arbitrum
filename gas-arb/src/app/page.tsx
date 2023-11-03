@@ -429,7 +429,7 @@ export default function Home() {
                   <tr>
                     <td>Eth transfer</td>
                     <td>{txEstimateGas[0]}</td>
-                    <td>{`Ξ ${convertGweiToEth(
+                    <td className={styles.td_ethCost}>{`Ξ ${convertGweiToEth(
                       parseInt(txEstimateGas[0])
                     )}`}</td>
                     <td>{`$ ${convertETHtoFIAT(
@@ -439,7 +439,7 @@ export default function Home() {
                   <tr>
                     <td>ARB transfer</td>
                     <td>{txEstimateGas[1]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[1])}`}</td>
+                    <td className={styles.td_ethCost}>{`Ξ ${convertGweiToEth(txEstimateGas[1])}`}</td>
                     <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[1])
                     )}`}</td>
@@ -447,7 +447,7 @@ export default function Home() {
                   <tr>
                     <td>USDT transfer</td>
                     <td>{txEstimateGas[2]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[2])}`}</td>
+                    <td className={styles.td_ethCost}>{`Ξ ${convertGweiToEth(txEstimateGas[2])}`}</td>
                     <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[2])
                     )}`}</td>
@@ -455,7 +455,7 @@ export default function Home() {
                   <tr>
                     <td>NFT transfer</td>
                     <td>{txEstimateGas[3]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[3])}`}</td>
+                    <td className={styles.td_ethCost}>{`Ξ ${convertGweiToEth(txEstimateGas[3])}`}</td>
                     <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[3])
                     )}`}</td>
@@ -463,7 +463,7 @@ export default function Home() {
                   <tr>
                     <td>Swap</td>
                     <td>{txEstimateGas[4]}</td>
-                    <td>{`Ξ ${convertGweiToEth(txEstimateGas[4])}`}</td>
+                    <td className={styles.td_ethCost}>{`Ξ ${convertGweiToEth(txEstimateGas[4])}`}</td>
                     <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[4])
                     )}`}</td>
@@ -480,7 +480,7 @@ export default function Home() {
                         onChange={getCustomGasPrice}
                       />
                     </td>
-                    <td>{`Ξ ${customGasPrice}`}</td>
+                    <td className={styles.td_ethCost}>{`Ξ ${customGasPrice}`}</td>
                     <td
                       className={styles.material_table__rawRight}
                     >{`$ ${convertETHtoFIAT(customGasPrice)}`}</td>
