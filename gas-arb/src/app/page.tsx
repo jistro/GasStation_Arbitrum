@@ -13,7 +13,11 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY_ARB;
 
 export default function Home() {
   var timeRefresh = Math.floor(Date.now() / 1000);
-  const [usd_eth, setUsd_eth] = useState(0);
+  const [currencyToETH, setCurrencyToETH] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
+  const [nameCurrency, setNameCurrency] = useState("USD");
+  const [currency_ETH, setCurrency_ETH] = useState(0);
   const [gasPrice, setGasPrice] = useState<any>("0");
   const [txEstimateGas, setTxEstimateGas] = useState<any>([]);
   const [loading, setLoading] = useState(true);
@@ -213,16 +217,29 @@ export default function Home() {
     setLoading(false);
   };
 
-  const getConvertionRate_USD_ETH = async () => {
-    console.log("getConvertionRate_USD_ETH");
+  const getConvertionRate_currency_ETH = async () => {
+    console.log("getConvertionRate_currency_ETH");
     try {
       const response = await fetch(
         `https://api.coinbase.com/v2/exchange-rates?currency=ETH`
       );
       const data = await response.json();
-      const convertionRate_USD_ETH = data.data.rates.USD;
-      setUsd_eth(convertionRate_USD_ETH);
-      console.log(usd_eth);
+      const convertionRate_currency_ETH = data.data.rates.USD;
+      /// usd btc arb eur mxn arg vef pen clp
+      setCurrencyToETH([
+        data.data.rates.USD,
+        data.data.rates.BTC,
+        data.data.rates.ARB,
+        data.data.rates.EUR,
+        data.data.rates.MXN,
+        data.data.rates.ARS,
+        data.data.rates.VEF,
+        data.data.rates.PEN,
+        data.data.rates.CLP,
+      ]);
+      console.log(currencyToETH);
+      setCurrency_ETH(convertionRate_currency_ETH);
+      console.log(currency_ETH);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -230,7 +247,7 @@ export default function Home() {
 
   useEffect(() => {
     getGasPrice();
-    getConvertionRate_USD_ETH();
+    getConvertionRate_currency_ETH();
     timeRefresh = Math.floor(Date.now() / 1000);
   }, []);
 
@@ -253,9 +270,60 @@ export default function Home() {
     return eth.toFixed(9);
   };
 
-  const convertETHtoUSD = (eth: any) => {
-    const usd = eth * usd_eth;
-    return usd.toFixed(2);
+  const convertETHtoFIAT = (eth: any) => {
+    const price = eth * currency_ETH;
+    return price.toFixed(4);
+  };
+
+  const selectCurrency = () => {
+    //obten de select el valor
+    const selectID = document.getElementById("getPrice") as HTMLSelectElement;
+    const selectedValue = selectID.value;
+    //hacer un switch case para cada valor
+    switch (selectedValue) {
+      case "getUSD":
+        setCurrency_ETH(currencyToETH[0]);
+        setNameCurrency("USD");
+        break;
+      case "getBTC":
+        setCurrency_ETH(currencyToETH[1]);
+        setNameCurrency("BTC");
+        break;
+      case "getARB":
+        setCurrency_ETH(currencyToETH[2]);
+        setNameCurrency("ARB");
+        break;
+      case "getEUR":
+        setCurrency_ETH(currencyToETH[3]);
+        setNameCurrency("EUR");
+        break;
+      case "getMXN":
+        setCurrency_ETH(currencyToETH[4]);
+        setNameCurrency("MXN");
+        break;
+      case "getARG":
+        setCurrency_ETH(currencyToETH[5]);
+        setNameCurrency("ARG");
+        break;
+      case "getVEF":
+        setCurrency_ETH(currencyToETH[6]);
+        setNameCurrency("VEF");
+        break;
+      case "getPEN":
+        setCurrency_ETH(currencyToETH[7]);
+        setNameCurrency("PEN");
+        break;
+      case "getCLP":
+        setCurrency_ETH(currencyToETH[8]);
+        setNameCurrency("CLP");
+        break;
+      default:
+        setCurrency_ETH(currencyToETH[0]);
+        setNameCurrency("USD");
+        break;
+    }
+    console.log(selectedValue);
+    console.log(currencyToETH);
   };
 
   const convertUnixTime = (unixTime: number) => {
@@ -319,7 +387,7 @@ export default function Home() {
             >
               {`last update: ${convertUnixTime(
                 timeRefresh
-              )} -- ETH price: USD ${usd_eth}`}
+              )} -- ETH price: ${nameCurrency} ${currency_ETH}`}
             </p>
             <br />
             <h1> Gas estimate </h1>
@@ -337,7 +405,24 @@ export default function Home() {
                     </th>
                     <th className={styles.material_table__gasPrice}>Gas</th>
                     <th>Eth cost</th>
-                    <th className={styles.material_table__USDCost}>USD cost</th>
+                    <th className={styles.material_table__USDCost}>
+                      <div
+                        className={styles.material_table__USDCost__Container}
+                      >
+                        <select name="" id="getPrice" onChange={selectCurrency}>
+                          <option value="getUSD" selected>
+                            USD Price
+                          </option>
+                          <option value="getEUR">EUR Price</option>\
+                          <option value="getARB">ARB Price</option>
+                          <option value="getMXN">MXN Price</option>
+                          <option value="getARG">ARG Price</option>
+                          <option value="getVEF">VEF Price</option>
+                          <option value="getPEN">PEN Price</option>
+                          <option value="getCLP">CLP Price</option>
+                        </select>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -347,7 +432,7 @@ export default function Home() {
                     <td>{`Ξ ${convertGweiToEth(
                       parseInt(txEstimateGas[0])
                     )}`}</td>
-                    <td>{`$ ${convertETHtoUSD(
+                    <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[0])
                     )}`}</td>
                   </tr>
@@ -355,7 +440,7 @@ export default function Home() {
                     <td>ARB transfer</td>
                     <td>{txEstimateGas[1]}</td>
                     <td>{`Ξ ${convertGweiToEth(txEstimateGas[1])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(
+                    <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[1])
                     )}`}</td>
                   </tr>
@@ -363,7 +448,7 @@ export default function Home() {
                     <td>USDT transfer</td>
                     <td>{txEstimateGas[2]}</td>
                     <td>{`Ξ ${convertGweiToEth(txEstimateGas[2])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(
+                    <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[2])
                     )}`}</td>
                   </tr>
@@ -371,7 +456,7 @@ export default function Home() {
                     <td>NFT transfer</td>
                     <td>{txEstimateGas[3]}</td>
                     <td>{`Ξ ${convertGweiToEth(txEstimateGas[3])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(
+                    <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[3])
                     )}`}</td>
                   </tr>
@@ -379,7 +464,7 @@ export default function Home() {
                     <td>Swap</td>
                     <td>{txEstimateGas[4]}</td>
                     <td>{`Ξ ${convertGweiToEth(txEstimateGas[4])}`}</td>
-                    <td>{`$ ${convertETHtoUSD(
+                    <td>{`$ ${convertETHtoFIAT(
                       convertGweiToEth(txEstimateGas[4])
                     )}`}</td>
                   </tr>
@@ -398,7 +483,7 @@ export default function Home() {
                     <td>{`Ξ ${customGasPrice}`}</td>
                     <td
                       className={styles.material_table__rawRight}
-                    >{`$ ${convertETHtoUSD(customGasPrice)}`}</td>
+                    >{`$ ${convertETHtoFIAT(customGasPrice)}`}</td>
                   </tr>
                 </tbody>
               </table>
