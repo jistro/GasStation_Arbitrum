@@ -50,10 +50,7 @@ export default function TableGoerliFaucets() {
             ETH on ethereum mainnet to get testnet ETH
           </p>
         </div>
-        <a
-          href="https://faucet.quicknode.com/arbitrum/goerli"
-          target="_blank"
-        >
+        <a href="https://faucet.quicknode.com/arbitrum/goerli" target="_blank">
           https://faucet.quicknode.com/arbitrum/goerli
         </a>
       </div>
@@ -66,6 +63,10 @@ export default function TableGoerliFaucets() {
             justifyContent: "center",
           }}
         >
+          <p>
+            <FaCheck color="green" size="12px" /> Does not require any
+            verification
+          </p>
           <p>
             <FaCheck color="green" size="12px" /> Gives 0.025 ETH per day
           </p>
