@@ -4,6 +4,8 @@ import styles from "./page.module.css";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 
+import HamburgerMenu from "@/components/hamburgerMenu";
+
 import { utils, providers } from "ethers";
 import { addDefaultLocalNetwork } from "@arbitrum/sdk";
 import { NodeInterface__factory } from "@arbitrum/sdk/dist/lib/abi/factories/NodeInterface__factory";
@@ -345,16 +347,20 @@ export default function Home() {
         />
       </Head>
       <main className={styles.main}>
-        <footer>
+        <header>
           <Image
             src="/LOGO.png"
-            alt="ethereum"
+            alt="Arb Gas Station Logo"
             width={0}
             height={0}
             sizes="100vw"
             style={{ width: "25%", height: "auto" }} // optional
           />
-        </footer>
+          <HamburgerMenu
+            numberBlocker={1}
+          />
+          
+        </header>
         {loading ? (
           <div className={styles.loading}>
             <div className={styles.lds_hourglass} />

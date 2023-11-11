@@ -1,0 +1,105 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #1f1f1f;
+  color: #fff;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.main header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.twoTables {
+  display: flex;
+  justify-content: center;
+}
+
+.descriptionText {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.descriptionText h1 {
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+.descriptionText p {
+  font-size: .8rem;
+  font-family: monospace;
+}
+
+.container__selectTestnet {
+  display: flex;
+  justify-content: center;
+  padding: 0px 50px;
+}
+.selectTestnet {
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: monospace;
+  margin: 20px 0px;
+  background-color: #1167ad;
+  color: #fff;
+}
+
+.testnetContainer {
+  justify-content: center;
+  padding: 0px 50px;
+}
+
+
+
+
+.link {
+  color: #77add9;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #4ea1e4;
+}
+
+
+.header {
+  background-color: #1f1f1f;
+  color: #fff;
+  font-family: monospace;
+  padding: 1rem;
+}
+
+@media (max-width: 800px) {
+  .container__selectTestnet{
+    padding: 0px 20px;
+  }
+  .testnetContainer {
+    padding: 0px 25px;
+  }
+}
+
+/*phone size*/
+@media (max-width: 600px) {
+  .description {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+
+}
+@media (max-width: 400px){
+
+}
+/*280x653*/
+@media (max-width: 300px) {
+
+}
