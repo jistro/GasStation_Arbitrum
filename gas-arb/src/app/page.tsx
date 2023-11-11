@@ -354,7 +354,7 @@ export default function Home() {
             width={0}
             height={0}
             sizes="100vw"
-            style={{ width: "25%", height: "auto" }} // optional
+            style={{ width: "20vw", height: "auto" }} // optional
           />
           <HamburgerMenu
             numberBlocker={1}
