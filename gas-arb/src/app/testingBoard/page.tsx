@@ -1,16 +1,15 @@
 "use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 
 import HamburgerMenu from "@/components/hamburgerMenu";
 import TableGoerliFaucets from "@/components/tableGoerliFaucets";
 
-import { utils, providers } from "ethers";
 import TableSepoliaFaucets from "@/components/tableSepoliaFaucets";
 
-export default function testingBoard() {
+export default function TestingBoard() {
   const [testnet, setTestnet] = useState("goerli");
 
   const listenSelectTestnet = () => {
@@ -86,9 +85,7 @@ export default function testingBoard() {
           ) : (
             <div className={styles.testnetContainer}>
               <h2>Sepolia Faucet</h2>
-              <p>
-                There is only one Sepolia faucet that provides testnet ETH
-              </p>
+              <p>There is only one Sepolia faucet that provides testnet ETH</p>
               <TableSepoliaFaucets />
             </div>
           )}
