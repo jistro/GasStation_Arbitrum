@@ -8,6 +8,7 @@ import HamburgerMenu from "@/components/hamburgerMenu";
 import TableGoerliFaucets from "@/components/tableGoerliFaucets";
 
 import TableSepoliaFaucets from "@/components/tableSepoliaFaucets";
+import TableGoerliNode from "@/components/tableGoerliNode";
 
 export default function TestingBoard() {
   const [testnet, setTestnet] = useState("goerli");
@@ -77,17 +78,32 @@ export default function TestingBoard() {
             </select>
           </div>
           {testnet === "goerli" ? (
-            <div className={styles.testnetContainer}>
-              <h2>Goerli Faucets</h2>
-              <p>There are several Goerli faucets that provide testnet ETH</p>
-              <TableGoerliFaucets />
-            </div>
+            <>
+              <div className={styles.testnetContainer}>
+                <h2>Goerli Faucets</h2>
+                <p>There are several Goerli faucets that provide testnet ETH</p>
+                <TableGoerliFaucets />
+              </div>
+
+              <div className={styles.testnetContainer}>
+                <h2>Goerli Node providers</h2>
+                <TableGoerliNode />
+              </div>
+            </>
           ) : (
-            <div className={styles.testnetContainer}>
-              <h2>Sepolia Faucet</h2>
-              <p>There is only one Sepolia faucet that provides testnet ETH</p>
-              <TableSepoliaFaucets />
-            </div>
+            <>
+              <div className={styles.testnetContainer}>
+                <h2>Sepolia Faucet</h2>
+                <p>
+                  There is only one Sepolia faucet that provides testnet ETH
+                </p>
+                <TableSepoliaFaucets />
+              </div>
+              <div className={styles.testnetContainer}>
+                <h2>Sepolia Node providers</h2>
+                <TableGoerliNode />
+              </div>
+            </>
           )}
         </div>
       </main>

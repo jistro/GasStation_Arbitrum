@@ -1,0 +1,93 @@
+.tableOne,
+.tableTwo,
+.tableThree {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.tableOne {
+  border-color: #652eac;
+  background-color: #652eac9b;
+}
+.tableTwo {
+  border-color: #3f2eac;
+  background-color: #3f2eac9b;
+}
+
+.tableThree {
+  border-color: #ac2e6b;
+  background-color: #ac2e6b9b;
+}
+
+.tableOne img,
+.tableTwo img,
+.tableThree img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.tableOne h2,
+.tableTwo h2,
+.tableThree h2 {
+  font-size: 1rem;
+  font-family: monospace;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.tableOne p,
+.tableTwo p,
+.tableThree p {
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: #fff;
+}
+
+.tableOne a,
+.tableTwo a,
+.tableThree a {
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: #fff;
+  text-decoration: none;
+}
+
+.tableOne a:hover {
+  color: #9582ff;
+}
+
+.tableTwo a:hover {
+  color: #82a1ff;
+}
+
+.tableThree a:hover {
+  color: #ff82e4;
+}
+
+@media (max-width: 700px) {
+  .tableOne,
+  .tableTwo,
+  .tableThree {
+    padding: 5px 5px;
+  }
+  .tableOne h2,
+  .tableTwo h2,
+  .tableThree h2 {
+    font-size: 0.8rem;
+  }
+  .tableOne p,
+  .tableTwo p,
+  .tableThree p {
+    font-size: 0.6rem;
+  }
+  .tableOne a,
+  .tableTwo a,
+  .tableThree a {
+    font-size: 0.6rem;
+  }
+}
