@@ -23,7 +23,9 @@
   margin-bottom: 1rem;
 }
 
-
+.container {
+  padding: 0px 10vw;
+}
 
 
 .twoTables {
@@ -89,10 +91,13 @@
 
 @media (max-width: 800px) {
   .container__selectTestnet{
-    padding: 0px 20px;
+    padding: 0px 0px;
   }
   .testnetContainer {
     padding: 0px 25px;
+  }
+  .container {
+    padding: 0px 0vw;
   }
 }
 
@@ -106,6 +111,9 @@
     width: 100%;
   }
 
+  .container {
+    padding: 0px 0vw;
+  }
 
 }
 @media (max-width: 400px){

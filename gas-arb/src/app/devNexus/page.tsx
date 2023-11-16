@@ -97,22 +97,25 @@ export default function TestingBoard() {
               </div>
             </>
           )}
+          <br />
+          
         </div>
         <div className={styles.descriptionText}>
-          <h1>Testing Board</h1>
-          <p>
-            In the development of smart contracts, it is important to test the
-            contracts before deploying them to the mainnet.
-          </p>
-          <p>
-            Arbitrum provides a testnet for developers to test their contracts.
-            For the deployment of contracts, the testnet requires testnet ETH.
-          </p>
-          <p>
-            The faucet provides testnet ETH for developers to test their
-            contracts.
-          </p>
-        </div>
+            <h1>Testing Board</h1>
+            <p>
+              In the development of smart contracts, it is important to test the
+              contracts before deploying them to the mainnet.
+            </p>
+            <p>
+              Arbitrum provides a testnet for developers to test their
+              contracts. For the deployment of contracts, the testnet requires
+              testnet ETH.
+            </p>
+            <p>
+              The faucet provides testnet ETH for developers to test their
+              contracts.
+            </p>
+          </div>
       </main>
       <footer className={styles.header}>
         <p
