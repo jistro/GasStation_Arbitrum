@@ -11,6 +11,7 @@
   "dependencies": {
     "@arbitrum/sdk": "^3.1.12",
     "@radix-ui/themes": "^2.0.0",
+    "ethereum-unit-converter": "^0.0.17",
     "ethers": "^5.7.2",
     "next": "13.5.4",
     "react": "^18",

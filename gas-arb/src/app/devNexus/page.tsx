@@ -9,6 +9,7 @@ import TableGoerliFaucets from "@/components/tableGoerliFaucets";
 
 import TableSepoliaFaucets from "@/components/tableSepoliaFaucets";
 import TableGoerliNode from "@/components/tableGoerliNode";
+import EthCalculator from "@/components/ethCalculator";
 
 export default function TestingBoard() {
   const [testnet, setTestnet] = useState("goerli");
@@ -31,17 +32,17 @@ export default function TestingBoard() {
   return (
     <>
       <Head>
-        <title>Gas hub</title>
+        <title>Dev Nexus</title>
         <meta
           charSet="utf-8"
-          name="Gas hub for Arbitrum"
-          content="Gas hub is a tool for Arbitrum users to find the gas prices and gas fees for their transactions."
+          name="Dev Nexus for Arbitrum"
+          content="Dev Nexus is a tool for Arbitrum developers to find resources for developing on Arbitrum"
         />
       </Head>
       <main className={styles.main}>
         <header>
           <Image
-            src="/LOGO.png"
+            src="/arb-dev-nexus-logo.png"
             alt="Arb Gas Station Logo"
             width={0}
             height={0}
@@ -51,22 +52,6 @@ export default function TestingBoard() {
           <HamburgerMenu numberBlocker={2} />
         </header>
         <div className={styles.container}>
-          <div className={styles.descriptionText}>
-            <h1>Testing Board</h1>
-            <p>
-              In the development of smart contracts, it is important to test the
-              contracts before deploying them to the mainnet.
-            </p>
-            <p>
-              Arbitrum provides a testnet for developers to test their
-              contracts. For the deployment of contracts, the testnet requires
-              testnet ETH.
-            </p>
-            <p>
-              The faucet provides testnet ETH for developers to test their
-              contracts.
-            </p>
-          </div>
           <div className={styles.container__selectTestnet}>
             <select
               className={styles.selectTestnet}
@@ -84,7 +69,10 @@ export default function TestingBoard() {
                 <p>There are several Goerli faucets that provide testnet ETH</p>
                 <TableGoerliFaucets />
               </div>
-
+              <div className={styles.testnetContainer}>
+                <h2>Calculator</h2>
+                <EthCalculator />
+              </div>
               <div className={styles.testnetContainer}>
                 <h2>Goerli Node providers</h2>
                 <TableGoerliNode />
@@ -100,11 +88,30 @@ export default function TestingBoard() {
                 <TableSepoliaFaucets />
               </div>
               <div className={styles.testnetContainer}>
+                <h2>Calculator</h2>
+                <EthCalculator />
+              </div>
+              <div className={styles.testnetContainer}>
                 <h2>Sepolia Node providers</h2>
                 <TableGoerliNode />
               </div>
             </>
           )}
+        </div>
+        <div className={styles.descriptionText}>
+          <h1>Testing Board</h1>
+          <p>
+            In the development of smart contracts, it is important to test the
+            contracts before deploying them to the mainnet.
+          </p>
+          <p>
+            Arbitrum provides a testnet for developers to test their contracts.
+            For the deployment of contracts, the testnet requires testnet ETH.
+          </p>
+          <p>
+            The faucet provides testnet ETH for developers to test their
+            contracts.
+          </p>
         </div>
       </main>
       <footer className={styles.header}>

@@ -22,9 +22,9 @@ export default function HamburgerMenu({ numberBlocker }: HamburgerMenuProps) {
             Main Page
           </DropdownMenu.Item>
           <DropdownMenu.Item
-            onClick={() => numberBlocker != 2 && (window.location.href = "/testingBoard")}
+            onClick={() => numberBlocker != 2 && (window.location.href = "/devNexus")}
             style={numberBlocker == 2 ? { backgroundColor: "#E0E0E0" } : {}}
-          >Testing Board</DropdownMenu.Item>
+          >Dev nexus</DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </Theme>
